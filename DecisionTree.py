@@ -15,7 +15,6 @@ def info(cD):
             l[i] = 1
             
     p = {}
-
     for i in l.keys():
         p[i] = l[i] / len(cD)
         
@@ -39,11 +38,9 @@ def makeDj(atr, D):
     return d
     
 def entropy(atr, D):
-    d = makeDj(atr, D)     
-        
-    return sum((len(d[i]) / len(D)) * info(d[i][classAtr]) for i in d.keys())
+    d = makeDj(atr, D)
     
-    
+    return sum((len(d[j]) / len(D)) * info(d[i][classAtr]) for j in d.keys())
 
 def makeDecisionTree(D=dataD, count=1):
     class_labels = tuple(D[classAtr].drop_duplicates())
@@ -51,7 +48,7 @@ def makeDecisionTree(D=dataD, count=1):
         print(count * "\t", "-->", class_labels[0])
         return 0
     
-    inf = info(D['play'])
+    inf = info(D[calssAtr])
     gain = []
     atrs = D.columns[:-1]
     for atr in atrs:

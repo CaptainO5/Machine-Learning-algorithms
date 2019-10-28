@@ -47,6 +47,9 @@ def makeDecisionTree(D=dataD, count=1):
     if len(class_labels) == 1:
         print(count * "\t", "-->", class_labels[0])
         return 0
+    if len(D.columns) == 1:
+        print(count * "\t", "-->", class_labels)
+            return 1
     
     inf = info(D[calssAtr])
     gain = []
